@@ -25,15 +25,8 @@ ALTER COLUMN Salary FLOAT;
 
 select * from Employees
 
-CREATE TABLE Departments (
-    DepartmentID INT PRIMARY KEY,
-    DepartmentName VARCHAR(50)
-);select * from Departments
-
-DELETE FROM Employees;
-
 Разница между DELETE, TRUNCATE и DROP:
- DELETE
+	 DELETE
 
 Удаляет данные из таблицы построчно (с условием WHERE или все строки).
 
@@ -41,7 +34,7 @@ DELETE FROM Employees;
 
 Можно откатить (ROLLBACK), если используется в транзакции.
 
-TRUNCATE
+	TRUNCATE
 
 Быстро удаляет все строки из таблицы.
 
@@ -51,8 +44,31 @@ TRUNCATE
 
 Считается более «жестким» и быстрым, чем DELETE для всех строк.
 
- DROP
+	DROP
 
 Полностью удаляет таблицу (и её структуру).
 
-После DROP таблицы её больше нет в базе данных
+После DROP таблицы её больше нет в базе данных.
+
+
+	CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50))
+	INSERT INTO Departments (DepartmentID, DepartmentName, Salary) values
+ (1, 'IT', 12500000),
+ (2, 'HR', 14000000),
+ (3, 'Finance',11000000 ),
+ (4, 'Logistics', 10000000 ),
+ (5, 'Marketing', 10500000 );
+
+	UPDATE Employees
+	SET Department = 'Management'
+	WHERE Salary > 5000;
+
+	ALTER TABLE Employees
+	DROP COLUMN Department;
+	EXEC sp_rename 'Employees', 'StaffMembers';
+
+);	DROP TABLE Departments;
+
+	select * from Departments
